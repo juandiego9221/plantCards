@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+Add selected attributes
+<form action="" th:action="@{/savePlant}" method="GET"  th:object="${plant}">
+	Genus: <input type="text"  name = "genus" th:field = "*{genus}"/><br/>
+	Species: <input type="text"  name = "species" th:field = "*{species}"/><br/>
+	Cultivar: <input type="text"  name = "cultivar" th:field = "*{cultivar}"/><br/>
+	Common: <input type="text"  name = "common" th:field = "*{common}"/><br/>
+	<div th:each = "component : ${components}">
+		<div th:replace = "${component} :: content">
+			Content
+		</div>
+
+	</div>
+	<button name="submit" type = "submit" value="0">Submit</button>
+</form>
+</body>
+</html>

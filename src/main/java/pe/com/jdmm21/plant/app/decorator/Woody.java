@@ -13,7 +13,7 @@ public class Woody implements PlantDecorator{
 	@Override
 	public String getTemplate() {
 		// TODO Auto-generated method stub
-		return null;
+		return "fragments/woody";
 	}
 
 	@Override

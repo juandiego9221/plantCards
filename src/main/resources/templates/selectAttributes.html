@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+Add selected attributes
+<form action="" th:action="@{addPlant}" method="GET">
+	<div th:each = "component : ${components}">
+		<input type = "checkbox" th:name = "${component}" /><span th:utext="${component}">Component</span>
+	</div>
+	<button name="submit" type = "submit" value="0">Submit</button>
+</form>
+</body>
+</html>

@@ -11,7 +11,7 @@ public class Native implements PlantDecorator{
 
 	@Override
 	public String getTemplate() {
-		return null;
+		return "fragments/native";
 	}
 
 	@Override

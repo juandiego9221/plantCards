@@ -13,7 +13,7 @@ public class Herbaceous implements PlantDecorator{
 	@Override
 	public String getTemplate() {
 		// TODO Auto-generated method stub
-		return null;
+		return "fragments/herbaceous";
 	}
 
 	@Override

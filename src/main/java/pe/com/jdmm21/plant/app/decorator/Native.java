@@ -15,8 +15,9 @@ public class Native implements PlantDecorator{
 	}
 
 	@Override
-	public void proccessSubmission(Map<String, Object> params) {
-		
+	public void proccessSubmission(Map<String, String> params) {
+		String region = params.get("region");
+		int i = 1+1;
 	}
 
 }

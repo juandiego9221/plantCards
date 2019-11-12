@@ -6,20 +6,19 @@ public class Woody implements PlantDecorator{
 
 	@Override
 	public String getLabel() {
-		// TODO Auto-generated method stub
 		return "Woody Plant";
 	}
 
 	@Override
 	public String getTemplate() {
-		// TODO Auto-generated method stub
 		return "fragments/woody";
 	}
 
 	@Override
-	public void proccessSubmission(Map<String, Object> params) {
-		// TODO Auto-generated method stub
-		
+	public void proccessSubmission(Map<String, String> params) {
+		String height = params.get("height");
+		String fallColor = params.get("fallColor");
+		int i = 1+1;
 	}
 
 }

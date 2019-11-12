@@ -6,6 +6,6 @@ public interface PlantDecorator {
 	
 	String getLabel();
 	String getTemplate();
-	void proccessSubmission(Map<String, Object> params);
+	void proccessSubmission(Map<String, String> params);
 
 }

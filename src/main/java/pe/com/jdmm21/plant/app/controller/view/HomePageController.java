@@ -20,7 +20,7 @@ import pe.com.jdmm21.plant.app.model.Plant;
 @Controller
 public class HomePageController {
 	
-	private List<PlantDecorator> plantDecorators ;
+	private List<PlantDecorator> plantDecorators;
 	Map<String, PlantDecorator> allPlantDecorators;
 	
 	public HomePageController() {
@@ -53,6 +53,7 @@ public class HomePageController {
 		List<String> templates = new ArrayList<String>();
 		for (String key : selectedKeys) {
 			PlantDecorator plantDecorator =  allPlantDecorators.get(key);
+			plantDecorators.add(plantDecorator);
 			if(plantDecorator!=null) {
 				String template = plantDecorator.getTemplate();
 				templates.add(template);
@@ -64,7 +65,10 @@ public class HomePageController {
 	}
 	
 	@RequestMapping("/savePlant")
-	public String savePlant() {
+	public String savePlant(Plant plant, @RequestParam Map<String, String> params) {
+		for (PlantDecorator plantDecorator : plantDecorators) {
+			plantDecorator.proccessSubmission(params);
+		}
 		return "savePlant";
 	}
 

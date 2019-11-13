@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+  <bean id="nativeGeo" class="pe.com.jdmm21.plant.app.decorator.Native"></bean>
+  <bean id="herbaceous" class="pe.com.jdmm21.plant.app.decorator.Herbaceous"></bean>
+  <bean id="woody" class="pe.com.jdmm21.plant.app.decorator.Woody"></bean>
+	
+  <bean id="plantAttributeGroup" class="pe.com.jdmm21.plant.app.decorator.PlantAttributeGroup" scope="singleton">
+		<property name="decorators">
+				<map>
+						<entry key="Herbaceous Plant (Flower)" value-ref="herbaceous"></entry>
+						<entry key="Native" value-ref="nativeGeo"></entry>
+						<entry key="Woody Plant" value-ref="woody"></entry>
+				</map>
+		</property>
+  </bean>
+
+
+
+
+</beans>

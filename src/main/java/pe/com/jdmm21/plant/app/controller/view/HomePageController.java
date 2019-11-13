@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,25 +15,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import pe.com.jdmm21.plant.app.decorator.Herbaceous;
 import pe.com.jdmm21.plant.app.decorator.Native;
+import pe.com.jdmm21.plant.app.decorator.PlantAttributeGroup;
 import pe.com.jdmm21.plant.app.decorator.PlantDecorator;
 import pe.com.jdmm21.plant.app.decorator.Woody;
 import pe.com.jdmm21.plant.app.model.Plant;
 
 @Controller
+@ImportResource("/WEB-INF/classes/applicationContext.xml")
 public class HomePageController {
 	
+	@Autowired
+	private PlantAttributeGroup plantAttributeGroup;
+	
 	private List<PlantDecorator> plantDecorators;
-	Map<String, PlantDecorator> allPlantDecorators;
 	
 	public HomePageController() {
 		plantDecorators = new ArrayList<>();
-		allPlantDecorators = new HashMap<>();
-		Woody woody = new Woody();
-		Herbaceous herbaceous = new Herbaceous();
-		Native nativeGeo = new Native();
-		allPlantDecorators.put(woody.getLabel(), woody);
-		allPlantDecorators.put(herbaceous.getLabel(), herbaceous);
-		allPlantDecorators.put(nativeGeo.getLabel(), nativeGeo);
 	}
 
 	@RequestMapping("/home")
@@ -43,7 +42,7 @@ public class HomePageController {
 	
 	@RequestMapping("/selectAttributes")
 	public String selectAttributes(Model model) {
-		model.addAttribute("components", allPlantDecorators.keySet());
+		model.addAttribute("components", plantAttributeGroup.getDecorators().keySet());
 		return "selectAttributes";
 	}
 	
@@ -52,7 +51,7 @@ public class HomePageController {
 		Set<String> selectedKeys = params.keySet();
 		List<String> templates = new ArrayList<String>();
 		for (String key : selectedKeys) {
-			PlantDecorator plantDecorator =  allPlantDecorators.get(key);
+			PlantDecorator plantDecorator =  plantAttributeGroup.getDecorators().get(key);
 			plantDecorators.add(plantDecorator);
 			if(plantDecorator!=null) {
 				String template = plantDecorator.getTemplate();
@@ -67,9 +66,11 @@ public class HomePageController {
 	@RequestMapping("/savePlant")
 	public String savePlant(Plant plant, @RequestParam Map<String, String> params) {
 		for (PlantDecorator plantDecorator : plantDecorators) {
-			plantDecorator.proccessSubmission(params);
+			if(plantDecorator!=null) {
+				plantDecorator.proccessSubmission(params);
+			}
 		}
 		return "savePlant";
-	}
+	}	
 
 }

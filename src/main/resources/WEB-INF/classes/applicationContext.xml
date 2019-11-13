@@ -7,6 +7,8 @@
   <bean id="nativeGeo" class="pe.com.jdmm21.plant.app.decorator.Native"></bean>
   <bean id="herbaceous" class="pe.com.jdmm21.plant.app.decorator.Herbaceous"></bean>
   <bean id="woody" class="pe.com.jdmm21.plant.app.decorator.Woody"></bean>
+   <bean id="evergreen" class="pe.com.jdmm21.plant.app.decorator.Evergreen"></bean>
+  
 	
   <bean id="plantAttributeGroup" class="pe.com.jdmm21.plant.app.decorator.PlantAttributeGroup" scope="singleton">
 		<property name="decorators">
@@ -14,6 +16,7 @@
 						<entry key="Herbaceous Plant (Flower)" value-ref="herbaceous"></entry>
 						<entry key="Native" value-ref="nativeGeo"></entry>
 						<entry key="Woody Plant" value-ref="woody"></entry>
+						<entry key="Evergreent" value-ref="evergreen"></entry>
 				</map>
 		</property>
   </bean>

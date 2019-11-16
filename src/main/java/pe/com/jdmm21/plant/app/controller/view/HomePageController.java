@@ -8,6 +8,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import pe.com.jdmm21.plant.app.decorator.Native;
 import pe.com.jdmm21.plant.app.decorator.PlantAttributeGroup;
 import pe.com.jdmm21.plant.app.decorator.PlantDecorator;
 import pe.com.jdmm21.plant.app.decorator.Woody;
+import pe.com.jdmm21.plant.app.helper.PlantHelper;
 import pe.com.jdmm21.plant.app.model.Plant;
 
 @Controller
@@ -72,5 +74,20 @@ public class HomePageController {
 		}
 		return "savePlant";
 	}	
+	
+	@RequestMapping("/generateJson")
+	public String generateJson() {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/WEB-INF/classes/applicationContext.xml");
+//		PlantHelper broadLeafPlantHelper = context.getBean("broadLeafPlantHelper",PlantHelper.class);
+//		PlantHelper herbaceousPlantHelper = context.getBean("herbaceousPlantHelper",PlantHelper.class);
+
+		PlantHelper mohanianAquifoliumHelper = context.getBean("broadLeafPlantHelper",PlantHelper.class);
+		PlantHelper monardaDidymaHelper = context.getBean("herbaceousPlantHelper",PlantHelper.class);
+
+		PlantHelper monardaFistulosaHelper = context.getBean("herbaceousPlantHelper",PlantHelper.class);
+		monardaFistulosaHelper.setSpecies("fistulosa");
+		monardaFistulosaHelper.setCommon("wild  Bergamon");
+		return "home";
+	}
 
 }

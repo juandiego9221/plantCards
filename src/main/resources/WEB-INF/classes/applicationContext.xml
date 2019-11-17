@@ -22,16 +22,9 @@
   </bean>
 
 	<bean id = "broadLeafPlantHelper" class="pe.com.jdmm21.plant.app.helper.WoodyHelper" scope="prototype">
-		<property name="genus" value="Mahonia"></property>
-		<property name="species" value="Aquifolium"></property>
-		<property name="common" value="Oregon"></property>
 		<property name="evergreenHelper" ref="broadLeafEvergreenHelper"></property>
-		
 	</bean>
 	<bean id = "herbaceousPlantHelper" class="pe.com.jdmm21.plant.app.helper.HerbaceousHelper" scope="prototype">
-		<property name="genus" value="Monarda"></property>
-		<property name="species" value="Beebalm"></property>
-		<property name="common" value="Beebalm"></property>
 	</bean>
 	<bean id = "coniferousEvergreenHelper" class="pe.com.jdmm21.plant.app.helper.EvergreenHelper" scope="prototype">
 		<property name="leafType" value="needle"></property>

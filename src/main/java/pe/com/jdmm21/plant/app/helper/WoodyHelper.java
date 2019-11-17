@@ -1,5 +1,7 @@
 package pe.com.jdmm21.plant.app.helper;
 
+import org.json.simple.JSONObject;
+
 public class WoodyHelper extends PlantHelper{
 
 	private int height;
@@ -11,6 +13,12 @@ public class WoodyHelper extends PlantHelper{
 	
 	public int getHeight() {
 		return height;
+	}
+
+	@Override
+	public void typeSpecificJSON(JSONObject jsonObject) {
+		jsonObject.put("height", height);
+		jsonObject.put("fallColor", fallColor);
 	}
 
 }

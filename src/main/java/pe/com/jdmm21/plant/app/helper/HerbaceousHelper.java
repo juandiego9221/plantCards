@@ -1,17 +1,17 @@
 package pe.com.jdmm21.plant.app.helper;
 
+import java.util.Map;
+
 import org.json.simple.JSONObject;
 
-import lombok.Data;
 
-@Data
 public class HerbaceousHelper extends PlantHelper{
-	private String flowerColor;
-	private String flowerTime;
+
 	@Override
 	public void typeSpecificJSON(JSONObject jsonObject) {
-		jsonObject.put("flowerColor", flowerColor);
-		jsonObject.put("flowerTime", flowerTime);
+		Map<String, String> additionalProperties = plant.getAdditionalProperties();
+		jsonObject.put("flowerColor", additionalProperties.get("flowerColor"));
+		jsonObject.put("flowerTime", additionalProperties.get("flowerTime"));
 	}
 
 }

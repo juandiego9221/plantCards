@@ -70,7 +70,7 @@ public class HomePageController {
 	public String savePlant(Plant plant, @RequestParam Map<String, String> params) {
 		for (PlantDecorator plantDecorator : plantDecorators) {
 			if (plantDecorator != null) {
-				plantDecorator.proccessSubmission(params);
+				plantDecorator.proccessSubmission(params, plant);
 			}
 		}
 		allPlants.add(plant);
@@ -93,10 +93,12 @@ public class HomePageController {
 //		plantHelpers.add(monardaDidymaHelper);
 //		plantHelpers.add(mohanianAquifoliumHelper);
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/WEB-INF/classes/applicationContext.xml");
-		PlantHelper plantHelper = context.getBean("broadLeafPlantHelper",PlantHelper.class);
 		StringBuilder json = new StringBuilder();
 				
 		for (Plant plant : allPlants) {
+			Map<String, String> additionalProperties = plant.getAdditionalProperties();
+			String helperBean = additionalProperties.get(Plant.HELPER);
+			PlantHelper plantHelper = context.getBean(helperBean,PlantHelper.class);
 			String plantJson = plant.accept(plantHelper);
 			json.append(plantJson);
 		}

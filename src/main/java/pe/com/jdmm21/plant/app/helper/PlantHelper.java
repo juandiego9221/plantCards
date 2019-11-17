@@ -8,7 +8,7 @@ public abstract class PlantHelper {
 
 	private String nativeRegion;
 	private EvergreenHelper evergreenHelper;
-	private Plant plant;
+	protected Plant plant;
 	
 	public String visit(Plant plant) {
 		this.plant = plant;

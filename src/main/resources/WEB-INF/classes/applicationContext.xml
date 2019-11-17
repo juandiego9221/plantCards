@@ -21,6 +21,12 @@
 		</property>
   </bean>
 
+	<bean id = "plantHelper" class="pe.com.jdmm21.plant.app.helper.BasicPlantHelper" scope="prototype">
+	</bean>
+
+	<bean id = "woodyPlantHelper" class="pe.com.jdmm21.plant.app.helper.WoodyHelper" scope="prototype">
+	</bean>
+
 	<bean id = "broadLeafPlantHelper" class="pe.com.jdmm21.plant.app.helper.WoodyHelper" scope="prototype">
 		<property name="evergreenHelper" ref="broadLeafEvergreenHelper"></property>
 	</bean>

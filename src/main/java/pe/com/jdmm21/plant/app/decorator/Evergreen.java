@@ -2,6 +2,8 @@ package pe.com.jdmm21.plant.app.decorator;
 
 import java.util.Map;
 
+import pe.com.jdmm21.plant.app.model.Plant;
+
 public class Evergreen implements PlantDecorator{
 
 	@Override
@@ -15,7 +17,7 @@ public class Evergreen implements PlantDecorator{
 	}
 
 	@Override
-	public void proccessSubmission(Map<String, String> params) {
+	public void proccessSubmission(Map<String, String> params, Plant plant) {
 		String broadleafconifer = params.get("broadleafconifer");
 		int i= 1+1;
 		
